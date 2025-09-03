@@ -102,7 +102,7 @@ export function Contact() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/your-profile"
+              href="https://www.linkedin.com/in/nandita-n-patil-3a8b0632a"
               target="_blank"
               rel="noreferrer"
               className="group hud-panel rounded-2xl p-3 flex flex-col items-center gap-2 text-center hover:brightness-110 transition"
