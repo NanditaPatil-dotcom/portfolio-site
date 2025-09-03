@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   title: "Portfolio",
   description: "Portfolio",
   generator: "Nandita",
+  icons: {
+    icon: "https://i.pinimg.com/1200x/0c/d1/14/0cd114f2a6f4e92a1d08dccdcda8b410.jpg",
+    shortcut: "https://i.pinimg.com/1200x/0c/d1/14/0cd114f2a6f4e92a1d08dccdcda8b410.jpg",
+    apple: "https://i.pinimg.com/1200x/0c/d1/14/0cd114f2a6f4e92a1d08dccdcda8b410.jpg",
+  },
 }
 
 const geistSans = Geist({
