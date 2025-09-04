@@ -29,10 +29,26 @@ export function CinematicBackground() {
     return () => window.removeEventListener("mousemove", onMove)
   }, [])
 
+
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      {/* Background image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('https://i.pinimg.com/736x/fb/f8/fb/fbf8fb8d24f0c28e1b4438843b3e0784.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+
       {/* Neon gradient glow background */}
-      <div ref={glowRef} className="absolute inset-0 cyber-bg" />
+      <div
+        ref={glowRef}
+        className="absolute inset-0 cyber-bg"
+        style={{ opacity: 0.35 }}
+      />
 
       {/* Animated fog layers */}
       <div ref={fog1Ref} className="fog-layer fog-1" />

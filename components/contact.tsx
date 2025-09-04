@@ -53,7 +53,7 @@ export function Contact() {
             <Label htmlFor="message">Message</Label>
             <Textarea id="message" name="message" rows={5} required />
           </div>
-          <Button type="submit" disabled={status === "sending"} className="rounded-md px-4 hud-button">
+          <Button type="submit" disabled={status === "sending"} className="rounded-md px-4 hud-button no-glow-button">
             {status === "sending" ? "Sending…" : "Send"}
           </Button>
           {/* Keep palette limited: use muted/foreground instead of extra colors */}

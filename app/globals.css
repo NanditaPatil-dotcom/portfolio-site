@@ -41,23 +41,23 @@
   --c-navy: #0D0E20; /* Chinese Black */
   --c-white: #ffffff; /* neutral foreground */
   --c-indigo: #2D1C7F; /* Persian Indigo */
-  --c-pink: #7546E8; /* Majorelle Blue */
-  --c-cyan: #B0A9E5; /* Max Blue Purple */
+  --c-pink: #FF5ACD; /* Neon Pink for headings */ /* Neon Pink for headings */
+  --c-cyan: #66F0FF; /* Cyan for CTAs/links */
 }
 
 .dark {
   --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --foreground: #E6EEF8; /* Soft readable white for body text */
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: #66F0FF; /* CTA cyan */
+  --primary-foreground: #0D0E20; /* Dark navy text on cyan buttons */
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --muted-foreground: #E6EEF8; /* Paragraphs currently using text-muted-foreground */
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
@@ -127,7 +127,15 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-size: 17px;
+    line-height: 1.6;
   }
+/* Glowy white for dark theme default text */
+.dark body {
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.28),
+    0 0 18px rgba(255,255,255,0.16);
+}
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem; /* roughly navbar height */
@@ -151,10 +159,10 @@
 
   /* Glass card surface */
   .neon-card {
-    background: color-mix(in oklch, var(--c-white) 6%, transparent);
-    border: 1px solid color-mix(in oklch, var(--c-white) 14%, transparent);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(15,23,36,0.88);
+    border: 1px solid color-mix(in oklch, var(--c-white) 8%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
 
   /* Gradient text for section titles */
@@ -167,7 +175,7 @@
 
   /* Primary neon button (pill) */
   .btn-neon {
-    background-image: linear-gradient(135deg, var(--c-pink), var(--c-indigo));
+    background-image: linear-gradient(135deg, #FF5ACD, #66F0FF);
     color: var(--c-white);
   }
   .btn-neon:hover {
@@ -216,11 +224,11 @@
   --hud-bg: #0D0E20; /* Chinese Black */
   --hud-surface: #0D0E20;
   --hud-grid: rgba(255, 255, 255, 0.06);
-  --hud-amber: #7546E8; /* Majorelle Blue accent */
+  --hud-amber: #FFD166; /* Warm gold accent */
   --hud-cyan: #B0A9E5;  /* Max Blue Purple accent */
   --hud-magenta: #C8B3F6; /* Vodka accent */
   --hud-line: rgba(255, 255, 255, 0.12);
-  --hud-glow: rgba(117, 70, 232, 0.22); /* Majorelle glow */
+  --hud-glow: rgba(255, 209, 102, 0.28); /* Warm gold glow */
 }
 
 /* Utilities to emulate retro-futuristic HUD look */
@@ -265,7 +273,9 @@
 
   /* Panel surface with thin border and amber glow */
   .hud-panel {
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    background: rgba(15,23,36,0.9); /* Opaque panel overlay */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--hud-line);
     border-radius: 14px;
     position: relative;
@@ -278,7 +288,7 @@
   /* Media frame with decorative corner brackets */
   .hud-media {
     position: relative;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0,0,0,0.30);
     overflow: hidden;
   }
   .hud-media::before,
@@ -309,12 +319,12 @@
   .hud-heading {
     position: relative;
     margin-bottom: 1.25rem /* 20px */;
-    font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
-    font-weight: 700;
+    font-family: var(--font-press, var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-weight: 400;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--hud-amber);
-    text-shadow: 0 0 10px var(--hud-glow);
+    text-shadow: none;
   }
   .hud-heading::before,
   .hud-heading::after {
@@ -405,23 +415,26 @@
 
   /* Neon title and subtitle for hero */
   .neon-title {
-    font-weight: 800;
+    font-family: var(--font-press, var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-weight: 400;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #ff4fd8; /* neon pink */
-    text-shadow:
-      0 0 20px rgba(244, 114, 182, 0.6),
-      0 0 40px rgba(244, 114, 182, 0.35);
+    color: #FF5ACD; /* neon pink (no glow) */
+    text-shadow: none;
+    -webkit-text-stroke: 0;
+    text-stroke: 0;
   }
   .neon-subtitle {
-    color: color-mix(in oklch, var(--c-white) 85%, transparent);
-    text-shadow: 0 0 10px rgba(96, 165, 250, 0.35);
+    color: color-mix(in oklch, var(--c-white) 92%, transparent);
+    text-shadow: none;
   }
 
   /* Cyber cards with glow + parallax */
   .cyber-card {
-    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15,23,36,0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.10);
     border-radius: 18px;
     position: relative;
     transition: transform 300ms ease, box-shadow 300ms ease, filter 300ms ease;
@@ -444,14 +457,15 @@
 
   /* Glow button for cyber theme */
   .glow-button {
-    border: 1px solid color-mix(in oklch, var(--cyber-blue) 55%, transparent);
-    background: linear-gradient(180deg, rgba(96,165,250,0.12), rgba(167,139,250,0.06));
-    color: #dbeafe;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 0 20px rgba(96,165,250,0.3);
+    border: 1px solid #B08D57; /* lighter gold border */
+    background: #0F1724; /* dark blue */
+    color: #E6EEF8; /* readable soft white */
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 0 16px rgba(15,23,36,0.6);
   }
   .glow-button:hover {
-    filter: brightness(1.1);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 0 28px rgba(167,139,250,0.35);
+    filter: brightness(1.06);
+    background: #13203A; /* slightly lighter dark blue */
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 0 20px rgba(255,226,154,0.28); /* lighter golden glow */
   }
 
   /* Timeline rail and dots */
@@ -479,11 +493,11 @@
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #e9d5ff;
-    background: linear-gradient(180deg, rgba(96,165,250,0.12), rgba(167,139,250,0.10));
-    border: 1px solid rgba(167,139,250,0.55);
+    color: #fde68a;
+    background: linear-gradient(180deg, rgba(251,191,36,0.18), rgba(245,158,11,0.12));
+    border: 1px solid rgba(245,158,11,0.55);
     border-radius: 10px;
-    box-shadow: 0 0 18px rgba(96,165,250,0.25), 0 0 28px rgba(167,139,250,0.25);
+    box-shadow: none;
   }
 
   /* Spotlight panel effect (for achievements, hero blocks, etc.) */
@@ -509,8 +523,10 @@
 
   /* Neon nav container */
   .nav-neon {
-    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border: 1px solid rgba(167,139,250,0.45);
+    background: rgba(15,23,36,0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(167,139,250,0.35);
     border-radius: 14px;
     box-shadow: 0 0 18px rgba(96,165,250,0.25), 0 0 28px rgba(167,139,250,0.2);
   }
@@ -542,5 +558,87 @@
       0 0 36px rgba(45, 28, 127, 0.35),   /* Persian Indigo */
       0 0 54px rgba(176, 169, 229, 0.25); /* Max Blue Purple */
     filter: brightness(1.05);
+  }
+}
+
+@layer utilities {
+  /* Glowy white text utility and global mappings for common white text usage */
+  .glow-white {
+    color: var(--c-white);
+    text-shadow:
+      0 0 8px rgba(255, 255, 255, 0.35),
+      0 0 18px rgba(255, 255, 255, 0.22),
+      0 0 28px rgba(255, 255, 255, 0.12);
+  }
+
+  /* Apply subtle glow wherever white text is typically used */
+  .text-white,
+  .dark .text-foreground,
+  .btn-neon {
+    text-shadow:
+      0 0 6px rgba(255, 255, 255, 0.28),
+      0 0 14px rgba(255, 255, 255, 0.18);
+  }
+}
+
+/* Mobile readability: increase base font size on narrow viewports */
+@media (max-width: 640px) {
+  body {
+    font-size: 18px; /* scale up on mobile for scanning */
+  }
+}
+
+/* Reading measure for long text inside common panels/cards */
+@layer utilities {
+  .hud-panel p,
+  .neon-card p,
+  .cyber-card p {
+    max-width: 72ch; /* ~70–90 char target */
+  }
+}
+
+/* Reserve neon for headings/small accents only: disable neon gradient if used on paragraphs */
+@layer utilities {
+  p.text-neon {
+    background-image: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    color: var(--foreground) !important;
+    text-shadow: none !important;
+  }
+}
+
+@layer utilities {
+  /* Remove amber/cyan outer glow from specific panels (e.g., Skills cards) */
+  .no-glow-panel {
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.02) inset,
+      0 8px 28px rgba(0,0,0,0.35) !important; /* omit var(--hud-glow) ring */
+  }
+}
+
+@layer utilities {
+  /* Remove glow from specific buttons while keeping existing style */
+  .no-glow-button {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* Very light golden outline for outline buttons (e.g., "Visit the website") */
+  .gold-outline-btn {
+    border: 1px solid #FFE29A80 !important; /* light gold */
+    background: transparent !important;
+    color: #E6EEF8;
+    box-shadow: none !important;
+  }
+  .gold-outline-btn:hover {
+    border-color: #FFE29ACC !important;     /* slightly stronger on hover */
+    background: rgba(255, 226, 154, 0.05) !important;
+  }
+
+  /* Light bronze border with dark blue bg for compact panels (e.g., Machine Learning) */
+  .bronze-outline {
+    border: 1px solid #FFE29A80 !important; /* very light bronze */
+    background: #0F1724 !important;         /* dark blue */
   }
 }

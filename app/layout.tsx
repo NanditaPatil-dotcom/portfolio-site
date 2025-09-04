@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Press_Start_2P } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CinematicBackground } from "@/components/cinematic-background"
 import "./globals.css"
@@ -28,13 +28,20 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 })
 
+const pressStart = Press_Start_2P({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-press",
+})
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${pressStart.variable} antialiased`} suppressHydrationWarning>
       <body className="font-sans scroll-smooth hud-grid relative text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <CinematicBackground />

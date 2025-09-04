@@ -17,14 +17,14 @@ const PROJECTS: Project[] = [
   {
     title: "Lumine",
     desc: "Study repetition website",
-    image: "https://i.pinimg.com/1200x/8e/3c/4e/8e3c4e858347d55dcd8a6676f1f94574.jpg",
+    image: "https://i.pinimg.com/originals/65/87/c0/6587c02f1ff0b4b8686ffc179fcacc1c.gif",
     tags: ["Next.js", "TypeScript", "Tailwind", "Fullstack"],
     github: "https://github.com/NanditaPatil-dotcom/Lumine",
   },
   {
     title: "Zenthomes",
     desc: "Property listings platform",
-    image: "https://i.pinimg.com/1200x/90/5d/75/905d75ddceb4fd24a3f3618d9e55405f.jpg",
+    image: "https://i.pinimg.com/originals/c2/fe/54/c2fe541b2f204d6bc2ec74404b6f0d05.gif",
     tags: ["Node.js", "Express", "MongoDB"],
     github: "https://github.com/NanditaPatil-dotcom/Zenthomes",
     website: "https://zenthomes.onrender.com/listings",
@@ -108,7 +108,7 @@ export function Projects() {
               <CardFooter className="flex gap-2 flex-wrap">
                 {p.website && (
                   <a href={p.website} target="_blank" rel="noreferrer">
-                    <Button variant="outline" className="glow-button">Visit the website</Button>
+                    <Button variant="outline" className="gold-outline-btn">Visit the website</Button>
                   </a>
                 )}
               </CardFooter>
