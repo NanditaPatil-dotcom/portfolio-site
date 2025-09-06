@@ -8,9 +8,9 @@ const SKILLS = [
   { title: "DSA", desc: "Data structures, algorithms, patterns" },
 ]
 
-export function Skills() {
+export function Skills({ delay = 0 }: { delay?: number }) {
   return (
-    <Section id="skills" title="Skills">
+    <Section id="skills" title="Skills" delay={delay}>
       <br></br>
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
         {SKILLS.map((s) => (

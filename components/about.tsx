@@ -1,9 +1,9 @@
 import Image from "next/image"
 import { Section } from "./section"
 
-export function About() {
+export function About({ delay = 0 }: { delay?: number }) {
   return (
-    <Section id="about" title="About Me">
+    <Section id="about" title="About Me" delay={delay}>
       <br></br>
       <div className="hud-panel rounded-2xl p-6 grid items-center gap-6 md:grid-cols-[140px_1fr]">
         <div className="hud-media flex items-center justify-center rounded-xl">

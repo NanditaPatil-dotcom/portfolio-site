@@ -1,7 +1,19 @@
 "use client"
 
+import { useEffect, useState } from "react"
+
 // Subtle animated grid background using pure CSS
 export function Hero() {
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    // Trigger slide-in animation after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true)
+    }, 400) // Delay for initial page load
+
+    return () => clearTimeout(timer)
+  }, [])
   return (
     <section className="relative overflow-hidden hud-scanlines" aria-labelledby="intro">
       {/* neon gradient hero with stars overlay and pill CTA */}
@@ -10,7 +22,9 @@ export function Hero() {
         <div className="absolute inset-0 stars" aria-hidden="true" />
       </div>
 
-      <div className="relative mx-auto max-w-5xl px-4 py-20">
+      <div className={`relative max-w-5xl px-6 py-21 ml-35 transition-all duration-1500 ease-out ${
+        isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
+      }`}>
         <h1 id="intro" className="neon-title text-balance text-4xl md:text-6xl">Hello, Nandita here.</h1>
         <p className="mt-2 neon-subtitle text-sm md:text-base">Engineer • Coder • Creator</p>
         <p className="mt-4 max-w-2xl text-pretty text-muted-foreground md:text-lg">

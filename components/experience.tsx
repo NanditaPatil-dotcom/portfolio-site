@@ -4,9 +4,9 @@ type Item = { role: string; org: string; time: string; notes: string }
 
 const EXPERIENCE: Item[] = []
 
-export function Experience() {
+export function Experience({ delay = 0 }: { delay?: number }) {
   return (
-    <Section id="experience" title="Experience">
+    <Section id="experience" title="Experience" delay={delay}>
       <br></br>
       {EXPERIENCE.length === 0 ? (
         <div className="hud-panel rounded-2xl p-6 text-sm text-muted-foreground">

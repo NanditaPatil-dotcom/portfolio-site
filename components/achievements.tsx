@@ -12,9 +12,9 @@ const CERT = {
 
 
 
-export function Achievements() {
+export function Achievements({ delay = 0 }: { delay?: number }) {
   return (
-    <Section id="achievements" title="Achievements & Certifications">
+    <Section id="achievements" title="Achievements & Certifications" delay={delay}>
       <br></br>
       <a
         href={CERT.url}

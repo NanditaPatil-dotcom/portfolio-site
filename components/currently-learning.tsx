@@ -3,9 +3,9 @@ import { Section } from "./section"
 
 const LEARNING = ["Machine Learning"]
 
-export function CurrentlyLearning() {
+export function CurrentlyLearning({ delay = 0 }: { delay?: number }) {
   return (
-    <Section id="learning" title="Currently Learning">
+    <Section id="learning" title="Currently Learning" delay={delay}>
       <br></br>
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {LEARNING.map((t) => (

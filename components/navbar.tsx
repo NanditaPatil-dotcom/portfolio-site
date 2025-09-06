@@ -16,6 +16,7 @@ const LINKS = [
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4)
@@ -24,9 +25,22 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
+  useEffect(() => {
+    // Trigger slide-in animation after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true)
+    }, 200) // Delay for initial page load
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <header
-      className={cn("sticky top-6 z-50 hud-scanlines", scrolled ? "backdrop-blur-sm" : "")}
+      className={cn(
+        "sticky top-6 z-50 hud-scanlines transition-all duration-1000 ease-out",
+        scrolled ? "backdrop-blur-sm" : "",
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      )}
       role="navigation"
       aria-label="Primary"
     >

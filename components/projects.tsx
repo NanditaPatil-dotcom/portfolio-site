@@ -31,9 +31,9 @@ const PROJECTS: Project[] = [
   },
 ]
 
-export function Projects() {
+export function Projects({ delay = 0 }: { delay?: number }) {
   return (
-    <Section id="projects" title="Projects">
+    <Section id="projects" title="Projects" delay={delay}>
       <br></br>
       {PROJECTS.length === 0 ? (
         <div className="neon-card rounded-2xl border p-6 text-sm">
